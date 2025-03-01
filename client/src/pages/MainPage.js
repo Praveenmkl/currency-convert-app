@@ -65,9 +65,9 @@ function MainPage() {
                            <option value=""> Select Your Source Currency</option>
                            {console.log("currency names : ",currencyNames)}
                            {Object.keys(currencyNames).map((currency) => (
-                  <option className=" p-1" key={currency} value={currency}>
-                    {currencyNames[currency]}
-                  </option>
+                          <option className=" p-1" key={currency} value={currency}>
+                          {currencyNames[currency]}
+                         </option>
                 ))}
 
 
@@ -81,8 +81,13 @@ function MainPage() {
                        onChange={(e) => setTargetCurrency(e.target.value)}
                        className= "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" name={targetCurrency} id={targetCurrency} value={targetCurrency}>
 
-                           <option value=""> Select Your Target Currency</option>
-
+                           <option value=""> Select Your Target Currency</option> 
+                           {Object.keys(currencyNames).map((currency) => (
+                           <option className=" p-1" key={currency} value={currency}>
+                          {currencyNames[currency]}
+                          </option>
+                          ))}
+                        
 
                        </select>  
                       </div>
