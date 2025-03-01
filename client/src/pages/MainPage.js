@@ -63,16 +63,21 @@ function MainPage() {
   return (
 
     <div>
+
+      
       {loading?(        
-      <div className="w-full h-screen flex flex-col items-center justify-center bg-black">
-      <div className="w-16 h-16 border-4 border-green-500 border-dashed rounded-full animate-spin"></div>
-      <p className="mt-4 text-green-600 font-semibold text-xl">Converting...</p>
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-black bg-cover bg-center"
+      style={{ backgroundImage: "url('/blur_bg.jpg')" }}>
+      <div className="w-16 h-16 border-4 border-[rgb(198,0,255)] border-dashed rounded-full animate-spin"></div>
+      <p className="mt-4 text-[rgb(198,0,255)] text-600 font-semibold text-xl">Converting...</p>
     </div>
       ):(  
-      <div className="bg-cover bg-center h-screen w-full" style={{ backgroundImage: "url('currency-banner.jpg')" }}>
+      <div className="bg-cover bg-center h-screen w-full" style={{ backgroundImage: "url('currency-banner.jpg')" }}                >
+      
+
         <div>
         <br></br> <br></br>
-        <h1 className='lg:mx-32  text-5xl font-bold text-green-500 text-center'> Convert Your Currencies Today!</h1>
+        <h1 className='lg:mx-32  text-5xl font-bold text-[rgb(198,0,255)] text-center'> Convert Your Currencies Today!</h1>
         <p className='lg:mx-32 opacity-80 py-6 text-center'>Convert Your Currencies Today is your ultimate currency exchange companion! Whether you're traveling the world, 
             shopping internationally, managing business transactions, or sending money abroad, our app ensures quick, accurate, 
             and hassle-free conversions in real-time.</p>
@@ -84,7 +89,7 @@ function MainPage() {
               
                       <div className="mb-4">
                        <label htmlFor={date} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Date</label>
-                       <input onChange={(e) => setDate(e.target.value)} type="Date" id={date} name={date} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500"  required />
+                       <input onChange={(e) => setDate(e.target.value)} type="Date" id={date} name={date} className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-purple-500 dark:focus:border-purple-500"  required />
     
                       </div>
 
@@ -94,7 +99,7 @@ function MainPage() {
                        </label>
                        <select
                        onChange={(e) => setSourceCurrency(e.target.value)}
-                       className= "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" name={sourceCurrency} id={sourceCurrency} value={sourceCurrency}>
+                       className= "bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-purple-500 dark:focus:border-purple-500" name={sourceCurrency} id={sourceCurrency} value={sourceCurrency}>
 
                            <option value=""> Select Your Source Currency</option>
                            {console.log("currency names : ",currencyNames)}
@@ -113,7 +118,7 @@ function MainPage() {
                        </label>
                        <select
                        onChange={(e) => setTargetCurrency(e.target.value)}
-                       className= "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" name={targetCurrency} id={targetCurrency} value={targetCurrency}>
+                       className= "bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-purple-500 dark:focus:border-purple-500" name={targetCurrency} id={targetCurrency} value={targetCurrency}>
 
                            <option value=""> Select Your Target Currency</option> 
                            {Object.keys(currencyNames).map((currency) => (
@@ -129,12 +134,12 @@ function MainPage() {
 
                       <div className="mb-4">
                        <label htmlFor={amountInSourceCurrency} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount in Source Currency</label>
-                       <input onChange={(e)=>setAmountInSourceCurrency(e.target.value)} type="number" id={amountInSourceCurrency} name={amountInSourceCurrency} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-green-500 focus:border-green-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-green-500 dark:focus:border-green-500" placeholder='Amount in Source Currency' required />
+                       <input onChange={(e)=>setAmountInSourceCurrency(e.target.value)} type="number" id={amountInSourceCurrency} name={amountInSourceCurrency} className="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-purple-500 focus:border-purple-500 block w-full p-2.5 dark:bg-white-100 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-purple-500 dark:focus:border-purple-500" placeholder='Amount in Source Currency' required />
 
                       <br></br>
                       </div>
 
-                     <button  className='bg-green-500 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md'>
+                     <button  className='bg-[rgb(169,3,217)] hover:bg-[rgb(214,66,255)] text-white font-medium py-2 px-4 rounded-md'>
                       {""}
                        Get Target Currency
                     </button> 
@@ -142,22 +147,19 @@ function MainPage() {
 
                     {!textloading ?  <section className='lg:mx-32  text-xl text-center '>
                     <br></br>
-                    <p>  {amountInSourceCurrency} {currencyNames[sourceCurrency] } is equals to {""}<span className='text-green-500 font-bold' >{amountInTargetCurrency}</span> in {currencyNames[targetCurrency]}</p>
+                    <p>  {amountInSourceCurrency} {currencyNames[sourceCurrency] } is equals to {""}<span className='text-[rgb(198,0,255)] font-bold' >{amountInTargetCurrency}</span> in {currencyNames[targetCurrency]}</p>
                     </section> : null}
                    
-                    
           
 
              </form>
              
-
-
+  
            </section>
        </div>
 
 
     </div>)}
-
     
     </div>
  
