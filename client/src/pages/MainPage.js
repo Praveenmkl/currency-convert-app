@@ -9,6 +9,8 @@ function MainPage() {
   const [amountInSourceCurrency,setAmountInSourceCurrency] = useState(0);
   const [amountInTargetCurrency,setAmountInTargetCurrency] = useState(0);
   const [currencyNames, setcurrencyNames] = useState([]);
+  const [loading, setLoading] = useState(false);
+
 
     //get all the currencies
     useEffect(() => {
@@ -18,7 +20,6 @@ function MainPage() {
             "http://localhost:5000/getAllCurrencies"
           );
           setcurrencyNames(responce.data);
-          console.log('currency names', responce.data)
         } catch (err) {
           console.error(err);
         }
@@ -27,15 +28,47 @@ function MainPage() {
     }, []);
 
   //handlesubmit method
-  const handleSubmit =(e) => {
+  const handleSubmit = async (e) => {
      e.preventDefault();
+     setLoading(true); 
      console.log(date,sourceCurrency,targetCurrency,amountInSourceCurrency);
+
+     try{
+
+      const responce = await axios.get("http://localhost:5000/convert",{
+           params:{
+            date,
+            sourceCurrency,
+            targetCurrency,
+            amountInSourceCurrency,
+           }
+      })
+
+  
+      setAmountInTargetCurrency(responce.data.amountInTargetCurrency)
+      console.log('Ammout in targer currency  : ' , amountInTargetCurrency)
+
+
+     }catch (e) {
+      console.log("error : ", e)
+
+     }finally {
+      setLoading(false); // Hide loading screen
+    }
   };
 
 
   
   return (
-   <div className="bg-cover bg-center h-screen w-full" style={{ backgroundImage: "url('currency-banner.jpg')" }}>
+
+    <div>
+      {loading?(        
+      <div className="w-full h-screen flex flex-col items-center justify-center bg-black">
+      <div className="w-16 h-16 border-4 border-green-500 border-dashed rounded-full animate-spin"></div>
+      <p className="mt-4 text-green-600 font-semibold text-xl">Converting...</p>
+    </div>
+      ):(  
+      <div className="bg-cover bg-center h-screen w-full" style={{ backgroundImage: "url('currency-banner.jpg')" }}>
         <div>
         <br></br> <br></br>
         <h1 className='lg:mx-32  text-5xl font-bold text-green-500 text-center'> Convert Your Currencies Today!</h1>
@@ -104,9 +137,11 @@ function MainPage() {
                       {""}
                        Get Target Currency
                     </button> 
-                
 
-                
+                    <p>Ammout in target currency  :  {amountInTargetCurrency}</p>
+
+                    
+          
 
              </form>
              
@@ -116,8 +151,11 @@ function MainPage() {
        </div>
 
 
-    </div>
+    </div>)}
+
     
+    </div>
+ 
   
   )
 }

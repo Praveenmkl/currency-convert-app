@@ -18,11 +18,14 @@ app.get("/convert", async (req, res) => {
   const { date, sourceCurrency, targetCurrency, amountInSourceCurrency } =
     req.query;
 
-  const currencyURL = `https://openexchangerates.org/api/historical/${date}.json?app_id=${process.env.APP_ID}`;
+    console.log(req.query)
+  const currencyURL = `https://openexchangerates.org/api/historical/2023-04-04.json?app_id=acb5260b336242a6a92a9dc4fc66bf4f`;
   const namesURl = `https://openexchangerates.org/api/currencies.json?app_id=${process.env.APP_ID}`;
   try {
     const response = await axios.get(currencyURL);
     const data = response.data;
+
+    console.log('currency data on date ' , data )
 
     // Check the data is valid
     if (!data || response.status !== 200) {
@@ -62,7 +65,7 @@ app.get("/convert", async (req, res) => {
       targetCurrencyName,
     });
   } catch (err) {
-    console.error(err);
+    console.error( 'eroor' ,err);
     res.status(500).json({ error: "An error occurred" });
   }
 });
