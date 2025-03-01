@@ -10,6 +10,7 @@ function MainPage() {
   const [amountInTargetCurrency,setAmountInTargetCurrency] = useState(0);
   const [currencyNames, setcurrencyNames] = useState([]);
   const [loading, setLoading] = useState(false);
+  const[textloading,setTextLoading]=useState(true); 
 
 
     //get all the currencies
@@ -47,7 +48,7 @@ function MainPage() {
   
       setAmountInTargetCurrency(responce.data.amountInTargetCurrency)
       console.log('Ammout in targer currency  : ' , amountInTargetCurrency)
-
+      setTextLoading(false)
 
      }catch (e) {
       console.log("error : ", e)
@@ -137,9 +138,13 @@ function MainPage() {
                       {""}
                        Get Target Currency
                     </button> 
+                    
 
-                    <p>Ammout in target currency  :  {amountInTargetCurrency}</p>
-
+                    {!textloading ?  <section className='lg:mx-32  text-xl text-center '>
+                    <br></br>
+                    <p>  {amountInSourceCurrency} {currencyNames[sourceCurrency] } is equals to {""}<span className='text-green-500 font-bold' >{amountInTargetCurrency}</span> in {currencyNames[targetCurrency]}</p>
+                    </section> : null}
+                   
                     
           
 
